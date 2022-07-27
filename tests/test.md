@@ -2,6 +2,8 @@
 
 It has images!
 
-![](./img.png)
+![img1](./img.png)
+
+![img2](./img.png)
 
 And it has text.

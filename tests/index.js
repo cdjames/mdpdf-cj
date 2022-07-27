@@ -98,11 +98,12 @@ describe('Convert CLI', function() {
         .then(result => {
           const htmlContent = fs.readFileSync('./tests/test.html');
 
-          htmlContent.includes("figure").should.be.true();
-          htmlContent.includes("figcaption").should.be.true();
+          htmlContent.includes("<figure").should.be.true();
+          htmlContent.includes("<figcaption").should.be.true();
+          htmlContent.includes("Figure 1:").should.be.true();
+          htmlContent.includes("Figure 2:").should.be.true();
           done();
         })
-        // .catch(done);
     });
   });
 
