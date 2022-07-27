@@ -1,4 +1,4 @@
-# MDPDF - Markdown to PDF converter
+# MDPDF-CJ - Markdown to PDF converter
 [![NPM version](https://img.shields.io/npm/v/mdpdf.svg?style=flat-square)](https://www.npmjs.com/package/mdpdf) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A command line markdown to pdf converter with support for page headers, footers, and custom stylesheets. Mdpdf is incredibly configurable and has a JavaScript API for more extravogant usage.
@@ -19,16 +19,16 @@ If you wish to report bugs or contribute fixes and features, please see the [con
 
 Install globally to use from the command line.
 
-`npm install mdpdf -g`
+`npm install mdpdf-cj -g`
 
 Install locally to access the API.
 
-`npm install mdpdf --save`
+`npm install mdpdf-cj --save`
 
 ## Example usage
 
-* `mdpdf README.md` - Simple convert using GitHub Markdown CSS and some additional basic stylings.
-* `mdpdf README.md --style styles.css --header header.hbs --hHeight 22` - Convert with custom styling with a header of height 22mm.
+* `mdpdf-cj README.md` - Simple convert using GitHub Markdown CSS and some additional basic stylings.
+* `mdpdf-cj README.md --style styles.css --header header.hbs --hHeight 22` - Convert with custom styling with a header of height 22mm.
 
 ## Options
 
@@ -44,6 +44,7 @@ Install locally to access the API.
 * `--border-right=<size>`       - Right border (default: 20mm)
 * `--gh-style`                  - Enable default gh-styles, when --style is used
 * `--no-emoji`                  - Disables emoji conversions
+* `--auto-image-caption`        - Wrap `<img>` tags in `<figure>` and add an auto-numbered `<figcaption>` based on the 'alt' text
 * `--debug`                     - Save the generated html for debugging
 * `--help`                      - Display this menu
 * `--version`                   - Display the application version
@@ -60,7 +61,7 @@ Mdpdf is powered by Puppeteer, the headless Chrome browser project by Google. [P
 
 ## Environment variables
 
-* `MDPDF_STYLES` - The full path to a stylesheet you wish to use if `--style` is not specified when calling `mdpdf` from the command line.
+* `MDPDF_STYLES` - The full path to a stylesheet you wish to use if `--style` is not specified when calling `mdpdf-cj` from the command line.
 
 ## Emoji support
 
@@ -73,7 +74,7 @@ The API is very straight forward with a single function `convert()` which takes 
 ### Example API usage
 
 ```JavaScript
-const mdpdf = require('mdpdf');
+const mdpdf = require('mdpdf-cj');
 const path = require('path');
 
 let options = {

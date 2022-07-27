@@ -92,6 +92,20 @@ describe('Convert CLI', function() {
     });
   });
 
+  context('when given auto-caption argument and markdown with an image', () => {
+    it('HTML file contains figure and figcaption tags', done => {
+      execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf', '--auto-image-caption', '--debug'])
+        .then(result => {
+          const htmlContent = fs.readFileSync('./tests/test.html');
+
+          htmlContent.includes("figure").should.be.true();
+          htmlContent.includes("figcaption").should.be.true();
+          done();
+        })
+        // .catch(done);
+    });
+  });
+
   context('When custom style is passed', () => {
     it('HTML file contains the custom style', done => {
       execa('./bin/index.js', ['./tests/test.md', '--style=./tests/test.css', '--debug'])

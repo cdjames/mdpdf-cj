@@ -1,6 +1,6 @@
 {
-  "name": "mdpdf",
-  "version": "3.0.1",
+  "name": "mdpdf-cj",
+  "version": "1.0.0",
   "description": "Markdown to PDF command line converter",
   "main": "./src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "mocha ./tests/index.js"
   },
   "bin": {
-    "mdpdf": "bin/index.js"
+    "mdpdf-cj": "bin/index.js"
   },
   "files": [
     "bin",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluehatbrit/mdpdf.git"
+    "url": "git+https://github.com/cdjames/mdpdf-cj.git"
   },
   "keywords": [
     "markdown",
@@ -26,9 +26,9 @@
     "converter"
   ],
   "author": {
-    "name": "Elliot Blackburn",
-    "email": "Elliot.blackburn@gmail.com",
-    "url": "http://www.elliotblackburn.com"
+    "name": "Collin James",
+    "email": "mail@collinjam.es",
+    "url": "https://github.com/cdjames"
   },
   "license": "MIT",
   "bugs": {

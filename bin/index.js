@@ -9,15 +9,15 @@ const mdpdf = require('../');
 const cli = meow(
   `
     Usage:
-        $ mdpdf <source> [<destination>] [options]
+        $ mdpdf-cj <source> [<destination>] [options]
 
     <source> must be a markdown file, with the extension '.md'.
 
     Examples:
-        $ mdpdf README.md
-        $ mdpdf README.md --style=styles.css --header=header.hbs --h-height=22mm
-        $ mdpdf README.md --footer=footer.hbs --f-height=22mm --debug
-        $ mdpdf README.md --border-left=30mm
+        $ mdpdf-cj README.md
+        $ mdpdf-cj README.md --style=styles.css --header=header.hbs --h-height=22mm
+        $ mdpdf-cj README.md --footer=footer.hbs --f-height=22mm --debug
+        $ mdpdf-cj README.md --border-left=30mm
 
     Options:
         --style=<filename>           A single css stylesheet you wish to apply to the PDF
@@ -33,6 +33,7 @@ const cli = meow(
         --gh-style                   Enable default gh-styles, when --style is used
         --no-emoji                   Disables emoji conversions
         --no-highlight               Disables syntax highlighting
+        --auto-image-caption         Create figure numbers and captions for img tags
         --debug                      Save the generated html for debugging
         --help                       Display this menu
         --version                    Display the application version
@@ -115,6 +116,7 @@ const options = {
   footer: footer ? path.resolve(footer) : null,
   noEmoji: cli.flags.noEmoji || false,
   noHighlight: cli.flags.noHighlight || false,
+  autoImageCaption: cli.flags.autoImageCaption || false,
   debug: debug
     ? path.resolve(source.slice(0, source.indexOf('.md')) + '.html')
     : null,
