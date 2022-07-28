@@ -5,6 +5,7 @@ const showdown = require('showdown');
 const showdownEmoji = require('showdown-emoji');
 const showdownHighlight = require('showdown-highlight');
 const showdownAutoImageCaptions = require('./extensions/auto-image-captions');
+const showdownAutoToc = require('./extensions/auto-toc');
 const puppeteer = require('puppeteer');
 const Handlebars = require('handlebars');
 const loophole = require('loophole');
@@ -49,7 +50,7 @@ function getAllStyles(options) {
   };
 }
 
-function parseMarkdownToHtml(markdown, convertEmojis, enableHighlight, enableAutoCaptions) {
+function parseMarkdownToHtml(markdown, convertEmojis, enableHighlight, enableAutoCaptions, enableAutoToc) {
   showdown.setFlavor('github');
   const options = {
     prefixHeaderId: false,
@@ -69,6 +70,10 @@ function parseMarkdownToHtml(markdown, convertEmojis, enableHighlight, enableAut
 
   if (enableAutoCaptions) {
     options.extensions.push(showdownAutoImageCaptions)
+  }
+
+  if (enableAutoToc) {
+    options.extensions.push(showdownAutoToc)
   }
 
   const converter = new showdown.Converter(options);
@@ -104,7 +109,7 @@ async function convert(options) {
     prepareFooter(options).then(v => options.footer = v),
   ];
 
-  let content = parseMarkdownToHtml(await source, !options.noEmoji, !options.noHighlight, options.autoImageCaption);
+  let content = parseMarkdownToHtml(await source, !options.noEmoji, !options.noHighlight, options.autoImageCaption, options.autoToc);
 
   // This step awaits so options is valid
   await Promise.all(promises);

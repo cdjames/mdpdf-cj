@@ -107,6 +107,18 @@ describe('Convert CLI', function() {
     });
   });
 
+  context('when given auto-toc argument and markdown with headers', () => {
+    it('HTML file contains table of contents', done => {
+      execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf', '--auto-toc', '--debug'])
+        .then(result => {
+          const htmlContent = fs.readFileSync('./tests/test.html');
+
+          htmlContent.includes("Table of Contents").should.be.true();
+          done();
+        })
+    });
+  });
+
   context('When custom style is passed', () => {
     it('HTML file contains the custom style', done => {
       execa('./bin/index.js', ['./tests/test.md', '--style=./tests/test.css', '--debug'])

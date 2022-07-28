@@ -34,6 +34,7 @@ const cli = meow(
         --no-emoji                   Disables emoji conversions
         --no-highlight               Disables syntax highlighting
         --auto-image-caption         Create figure numbers and captions for img tags
+        --auto-toc                   Create a table of contents based on headers; insert where <!-- toc --> is found in doc
         --debug                      Save the generated html for debugging
         --help                       Display this menu
         --version                    Display the application version
@@ -117,6 +118,7 @@ const options = {
   noEmoji: cli.flags.noEmoji || false,
   noHighlight: cli.flags.noHighlight || false,
   autoImageCaption: cli.flags.autoImageCaption || false,
+  autoToc: cli.flags.autoToc || false,
   debug: debug
     ? path.resolve(source.slice(0, source.indexOf('.md')) + '.html')
     : null,
