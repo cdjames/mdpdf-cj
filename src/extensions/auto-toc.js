@@ -16,8 +16,10 @@ module.exports = function autoTableOfContents () {
             type: 'lang',
             regex: /^\s*(#+)\s*(.*)$/gim,
             replace: function(match, p1, p2, offset, string, groups) { 
+                const findSpecialChars = RegExp('[^a-zA-Z0-9 ]', 'gi')
                 let numHashes = parseInt(p1.length)
-                matches.push("\t".repeat(numHashes-1) + "- [" + p2 + "](#" +  p2.replaceAll(" ", "-").toLowerCase() + ")");
+                let anchor = p2.toLowerCase().replaceAll(findSpecialChars, "").replaceAll(" ", "-")
+                matches.push("\t".repeat(numHashes-1) + "- [" + p2 + "](#" +  anchor + ")");
                 return match;
             }
         },

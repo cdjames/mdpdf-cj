@@ -114,6 +114,7 @@ describe('Convert CLI', function() {
           const htmlContent = fs.readFileSync('./tests/test.html');
 
           htmlContent.includes("Table of Contents").should.be.true();
+          htmlContent.includes('href="#this-is-an-h1-with-special-chars').should.be.true();
           done();
         })
     });
