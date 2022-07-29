@@ -17,7 +17,7 @@ module.exports = function autoTableOfContents () {
             regex: /^\s*(#+)\s*(.*)$/gim,
             replace: function(match, p1, p2, offset, string, groups) { 
                 let numHashes = parseInt(p1.length)
-                matches.push(" ".repeat(numHashes-1) + "- [" + p2 + "](#" +  p2.replaceAll(" ", "-").toLowerCase() + ")");
+                matches.push("\t".repeat(numHashes-1) + "- [" + p2 + "](#" +  p2.replaceAll(" ", "-").toLowerCase() + ")");
                 return match;
             }
         },
