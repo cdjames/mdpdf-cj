@@ -12,7 +12,7 @@ module.exports = function autoImageCaptions () {
                 var altText = altPattern.exec(imgTag)
                 
                 if (altText[1] === 'nofigure') {
-                    return imgTag
+                    return "<figure align='center'>" + imgTag + "</figure>"
                 }
 
                 captionNum++;
