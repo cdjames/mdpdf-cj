@@ -44,7 +44,7 @@ Install locally to access the API.
 * `--border-right=<size>`       - Right border (default: 20mm)
 * `--gh-style`                  - Enable default gh-styles, when --style is used
 * `--no-emoji`                  - Disables emoji conversions
-* `--auto-image-caption`        - Wrap `<img>` tags in `<figure>` and add an auto-numbered `<figcaption>` based on the 'alt' text
+* `--auto-image-caption`        - Wrap `<img>` tags in `<figure>` and add an auto-numbered `<figcaption>` based on the 'alt' text; using alt text "nofigure" will exclude the image from being numbered
 * `--auto-toc`                   Create a table of contents based on headers; insert where `<!-- toc -->` is found in doc
 * `--debug`                     - Save the generated html for debugging
 * `--help`                      - Display this menu

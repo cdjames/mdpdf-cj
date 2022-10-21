@@ -102,6 +102,8 @@ describe('Convert CLI', function() {
           htmlContent.includes("<figcaption").should.be.true();
           htmlContent.includes("Figure 1:").should.be.true();
           htmlContent.includes("Figure 2:").should.be.true();
+          htmlContent.includes("Figure 3:").should.be.true();
+          htmlContent.includes("Figure 4:").should.be.false();
           done();
         })
     });

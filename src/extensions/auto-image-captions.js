@@ -6,7 +6,7 @@ module.exports = function autoImageCaptions () {
             type: "output", 
             regex: imgPattern, // find all img tags
             replace: function(imgTag) {
-                const altPattern = RegExp('alt="(.*)"', 'gi');
+                const altPattern = RegExp('(?!.*alt="nofigure")alt="(.*)"', 'gi');
 
                 captionNum++;
 
