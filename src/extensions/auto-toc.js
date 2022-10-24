@@ -1,5 +1,6 @@
 module.exports = function autoTableOfContents () { 
     var matches = [];
+    var anchorPairs = []
     var h1Num = 0;
     var h2Num = 0;
     var h3Num = 0;
@@ -69,7 +70,9 @@ module.exports = function autoTableOfContents () {
                         break;
                 }
                 headingWithNumbering = numbering + " " + p2
+                let origAnchor = p2.toLowerCase().replaceAll(findSpecialChars, "").replaceAll(" ", "-")
                 let anchor = headingWithNumbering.toLowerCase().replaceAll(findSpecialChars, "").replaceAll(" ", "-")
+                anchorPairs.push({origAnchor: origAnchor, replaceAnchor: anchor})
                 matches.push("\t".repeat(numHashes-1) + "- [" + headingWithNumbering + "](#" +  anchor + ")");
                 return p1 + "   " + headingWithNumbering;
             }
@@ -87,7 +90,16 @@ module.exports = function autoTableOfContents () {
                 let title = "## Table of Contents\n"
                 
                 /* find headers text */
-                return text.replace(headerPattern, title + toc)                    
+                text = text.replace(headerPattern, title + toc)   
+                
+                /* find any anchors that need to be changed */
+                anchorPairs.forEach(element => {
+                    let anchorPattern = RegExp("#"+element.origAnchor, 'gi')
+
+                    text = text.replace(anchorPattern, "#"+element.replaceAnchor)
+                });
+
+                return text
             }
         }
     ]

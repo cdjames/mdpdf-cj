@@ -5,7 +5,14 @@ const mdpdf = require('../');
 const utils = require('./utils');
 
 function clean() {
-  const filesToRemove = ['./README.pdf', './README.html', './output.pdf', './test-img-output.pdf', './test-toc-output.pdf'];
+  const filesToRemove = [
+    './README.pdf', 
+    './README.html', 
+    './output.pdf', 
+    './test-img-output.pdf', 
+    './test-toc-output.pdf',
+    './test-page-breaks-output.pdf'
+  ];
 
   filesToRemove.forEach(file => {
     fs.exists(file, exists => {
@@ -117,6 +124,7 @@ describe('Convert CLI', function() {
 
           htmlContent.includes("Table of Contents").should.be.true();
           htmlContent.includes('href="#2-this-is-an-h1-with-special-chars').should.be.true();
+          htmlContent.includes('href="#this-is-an-h2').should.be.false();
           done();
         })
     });

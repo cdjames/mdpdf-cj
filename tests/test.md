@@ -5,7 +5,7 @@
 ### This is an h3
 # This,. is an `h1` **[with]** special//\ chars{}!
 
-\# not a header
+\# not a heading
 
 It has images!
 
@@ -16,3 +16,5 @@ It has images!
 ![nocaption](./img.png)
 
 And it has text.
+
+A [link](#this-is-an-h2) to a heading
