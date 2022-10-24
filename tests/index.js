@@ -5,7 +5,7 @@ const mdpdf = require('../');
 const utils = require('./utils');
 
 function clean() {
-  const filesToRemove = ['./README.pdf', './README.html', './output.pdf', './test-img-output.pdf'];
+  const filesToRemove = ['./README.pdf', './README.html', './output.pdf', './test-img-output.pdf', './test-toc-output.pdf'];
 
   filesToRemove.forEach(file => {
     fs.exists(file, exists => {
@@ -111,12 +111,12 @@ describe('Convert CLI', function() {
 
   context('when given auto-toc argument and markdown with headers', () => {
     it('HTML file contains table of contents', done => {
-      execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf', '--auto-toc', '--debug'])
+      execa('./bin/index.js', ['./tests/test.md', './test-toc-output.pdf', '--auto-toc', '--debug'])
         .then(result => {
           const htmlContent = fs.readFileSync('./tests/test.html');
 
           htmlContent.includes("Table of Contents").should.be.true();
-          htmlContent.includes('href="#this-is-an-h1-with-special-chars').should.be.true();
+          htmlContent.includes('href="#2-this-is-an-h1-with-special-chars').should.be.true();
           done();
         })
     });
