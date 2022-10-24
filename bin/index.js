@@ -33,8 +33,9 @@ const cli = meow(
         --gh-style                   Enable default gh-styles, when --style is used
         --no-emoji                   Disables emoji conversions
         --no-highlight               Disables syntax highlighting
-        --auto-image-caption         Create figure numbers and captions for img tags
-        --auto-toc                   Create a table of contents based on headers; insert where <!-- toc --> is found in doc
+        --auto-image-caption         Wrap <img> tags in <figure> and add an auto-numbered <figcaption> based on the 'alt' text; using alt text "nocaption" will exclude the image from being numbered
+        --auto-toc                   Create a table of contents based on headings (h1, h2, etc); insert where <!-- toc --> is found in doc; automatically number the headings
+        --auto-page-breaks           Add page breaks before each h1
         --debug                      Save the generated html for debugging
         --help                       Display this menu
         --version                    Display the application version
@@ -119,6 +120,7 @@ const options = {
   noHighlight: cli.flags.noHighlight || false,
   autoImageCaption: cli.flags.autoImageCaption || false,
   autoToc: cli.flags.autoToc || false,
+  autoPageBreaks: cli.flags.autoPageBreaks || false,
   debug: debug
     ? path.resolve(source.slice(0, source.indexOf('.md')) + '.html')
     : null,

@@ -122,6 +122,18 @@ describe('Convert CLI', function() {
     });
   });
 
+  context('when given auto-page-breaks argument and markdown with headers', () => {
+    it('HTML file contains page breaks', done => {
+      execa('./bin/index.js', ['./tests/test.md', './test-page-breaks-output.pdf', '--auto-page-breaks', '--debug'])
+        .then(result => {
+          const htmlContent = fs.readFileSync('./tests/test.html');
+
+          htmlContent.includes('<div class="page-break"></div>').should.be.true();
+          done();
+        })
+    });
+  });
+
   context('When custom style is passed', () => {
     it('HTML file contains the custom style', done => {
       execa('./bin/index.js', ['./tests/test.md', '--style=./tests/test.css', '--debug'])
