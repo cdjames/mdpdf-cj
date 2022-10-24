@@ -13,6 +13,6 @@ It has images!
 
 ![img2](./img.png)
 ![img3](./img.png)
-![nofigure](./img.png)
+![nocaption](./img.png)
 
 And it has text.

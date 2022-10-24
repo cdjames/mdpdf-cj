@@ -11,7 +11,7 @@ module.exports = function autoImageCaptions () {
                 /* find 'alt' text */
                 var altText = altPattern.exec(imgTag)
                 
-                if (altText[1] === 'nofigure') {
+                if (altText[1] === 'nocaption') {
                     return "<figure align='center'>" + imgTag + "</figure>"
                 }
 
