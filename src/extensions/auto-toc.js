@@ -94,7 +94,8 @@ module.exports = function autoTableOfContents () {
                 
                 /* find any anchors that need to be changed */
                 anchorPairs.forEach(element => {
-                    let anchorPattern = RegExp("(#"+element.origAnchor+")", 'gi')
+                    let p = "\\(#"+element.origAnchor+"\\)";
+                    let anchorPattern = RegExp(p, 'gi');
 
                     text = text.replace(anchorPattern, "(#"+element.replaceAnchor+")")
                 });
