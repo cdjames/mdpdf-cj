@@ -45,7 +45,8 @@ Install locally to access the API.
 * `--gh-style`                  - Enable default gh-styles, when --style is used
 * `--no-emoji`                  - Disables emoji conversions
 * `--auto-image-caption`        - Wrap `<img>` tags in `<figure>` and add an auto-numbered `<figcaption>` based on the 'alt' text; using alt text "nocaption" will exclude the image from being numbered
-* `--auto-toc`                   Create a table of contents based on headings (h1, h2, etc); insert where `<!-- toc -->` is found in doc; automatically number the headings
+* `--auto-toc`                  - Create a table of contents based on headings (h1, h2, etc); insert where `<!-- toc -->` is found in doc; automatically number the headings
+* `--auto-page-breaks`          - Add page breaks before each h1
 * `--debug`                     - Save the generated html for debugging
 * `--help`                      - Display this menu
 * `--version`                   - Display the application version
