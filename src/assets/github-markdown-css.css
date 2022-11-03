@@ -7,7 +7,7 @@
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   color: #333;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Liberation Sans", "Helvetica Neue", Helvetica, "Segoe UI", Arial, liberationsans, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   line-height: 1.6;
   word-wrap: break-word;
@@ -85,7 +85,7 @@
 }
 
 .markdown-body input {
-  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px / 1.4 "Liberation Sans", Helvetica, arial, liberationsans, nimbussansl, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .markdown-body a {
@@ -181,14 +181,14 @@
 }
 
 .markdown-body code {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: "Liberation Mono", Consolas, Menlo, Courier, monospace;
   font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 12px "Liberation Mono", Consolas, Menlo, Courier, monospace;
 }
 
 .markdown-body .select::-ms-expand {
@@ -625,7 +625,7 @@
 .markdown-body kbd {
   display: inline-block;
   padding: 3px 5px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 11px "Liberation Mono", Consolas, Menlo, Courier, monospace;
   line-height: 10px;
   color: #555;
   vertical-align: middle;
