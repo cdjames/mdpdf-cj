@@ -33,88 +33,88 @@ describe('Convert CLI', function() {
   after(clean);
   beforeEach(clean);
 
-  // context('when given a markdown file', () => {
-  //   it('creates a pdf', done => {
-  //     execa('./bin/index.js', ['./README.md'])
-  //       .then(result => {
-  //         const stdout = result.stdout;
-  //         const pdfExists = fs.existsSync('./README.pdf');
+  context('when given a markdown file', () => {
+    it('creates a pdf', done => {
+      execa('./bin/index.js', ['./README.md'])
+        .then(result => {
+          const stdout = result.stdout;
+          const pdfExists = fs.existsSync('./README.pdf');
 
-  //         pdfExists.should.be.true();
-  //         stdout.should.endWith('README.pdf');
+          pdfExists.should.be.true();
+          stdout.should.endWith('README.pdf');
 
-  //         done();
-  //       })
-  //       .catch(done);
-  //   });
-  // });
+          done();
+        })
+        .catch(done);
+    });
+  });
 
-  // context('when passed debug flag', () => {
-  //   it('creates a pdf and html file', done => {
-  //     execa('./bin/index.js', ['./README.md', '--debug'])
-  //       .then(result => {
-  //         const stdout = result.stdout;
-  //         const pdfExists = fs.existsSync('./README.pdf');
-  //         const htmlExists = fs.existsSync('./README.html');
+  context('when passed debug flag', () => {
+    it('creates a pdf and html file', done => {
+      execa('./bin/index.js', ['./README.md', '--debug'])
+        .then(result => {
+          const stdout = result.stdout;
+          const pdfExists = fs.existsSync('./README.pdf');
+          const htmlExists = fs.existsSync('./README.html');
 
-  //         pdfExists.should.be.true();
-  //         htmlExists.should.be.true();
-  //         stdout.should.endWith('README.pdf');
+          pdfExists.should.be.true();
+          htmlExists.should.be.true();
+          stdout.should.endWith('README.pdf');
 
-  //         done();
-  //       })
-  //       .catch(done);
-  //   });
-  // });
+          done();
+        })
+        .catch(done);
+    });
+  });
 
-  // context('when passed a destination', () => {
-  //   it('creates a pdf at the specified destination', done => {
-  //     execa('./bin/index.js', ['./README.md', 'output.pdf'])
-  //       .then(result => {
-  //         const stdout = result.stdout;
-  //         const pdfExists = fs.existsSync('./output.pdf');
+  context('when passed a destination', () => {
+    it('creates a pdf at the specified destination', done => {
+      execa('./bin/index.js', ['./README.md', 'output.pdf'])
+        .then(result => {
+          const stdout = result.stdout;
+          const pdfExists = fs.existsSync('./output.pdf');
 
-  //         pdfExists.should.be.true();
-  //         stdout.should.endWith('output.pdf');
+          pdfExists.should.be.true();
+          stdout.should.endWith('output.pdf');
 
-  //         done();
-  //       })
-  //       .catch(done);
-  //   });
-  // });
+          done();
+        })
+        .catch(done);
+    });
+  });
 
-  // context('when given markdown with an image', () => {
-  //   it('creates a pdf', done => {
-  //     execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf'])
-  //       .then(result => {
-  //         const stdout = result.stdout;
-  //         const pdfExists = fs.existsSync('./test-img-output.pdf');
+  context('when given markdown with an image', () => {
+    it('creates a pdf', done => {
+      execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf'])
+        .then(result => {
+          const stdout = result.stdout;
+          const pdfExists = fs.existsSync('./test-img-output.pdf');
 
-  //         pdfExists.should.be.true();
-  //         stdout.should.endWith('test-img-output.pdf');
+          pdfExists.should.be.true();
+          stdout.should.endWith('test-img-output.pdf');
 
-  //         done();
-  //       })
-  //       .catch(done);
-  //   });
-  // });
+          done();
+        })
+        .catch(done);
+    });
+  });
 
-  // context('when given auto-caption argument and markdown with an image', () => {
-  //   it('HTML file contains figure and figcaption tags', done => {
-  //     execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf', '--auto-image-caption', '--debug'])
-  //       .then(result => {
-  //         const htmlContent = fs.readFileSync('./tests/test.html');
+  context('when given auto-caption argument and markdown with an image', () => {
+    it('HTML file contains figure and figcaption tags', done => {
+      execa('./bin/index.js', ['./tests/test.md', './test-img-output.pdf', '--auto-image-caption', '--debug'])
+        .then(result => {
+          const htmlContent = fs.readFileSync('./tests/test.html');
 
-  //         htmlContent.includes("<figure").should.be.true();
-  //         htmlContent.includes("<figcaption").should.be.true();
-  //         htmlContent.includes("Figure 1:").should.be.true();
-  //         htmlContent.includes("Figure 2:").should.be.true();
-  //         htmlContent.includes("Figure 3:").should.be.true();
-  //         htmlContent.includes("Figure 4:").should.be.false();
-  //         done();
-  //       })
-  //   });
-  // });
+          htmlContent.includes("<figure").should.be.true();
+          htmlContent.includes("<figcaption").should.be.true();
+          htmlContent.includes("Figure 1:").should.be.true();
+          htmlContent.includes("Figure 2:").should.be.true();
+          htmlContent.includes("Figure 3:").should.be.true();
+          htmlContent.includes("Figure 4:").should.be.false();
+          done();
+        })
+    });
+  });
 
   context('when given auto-toc argument and markdown with headers', () => {
     it('HTML file contains table of contents', done => {

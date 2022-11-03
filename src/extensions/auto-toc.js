@@ -70,8 +70,8 @@ module.exports = function autoTableOfContents () {
                         break;
                 }
                 headingWithNumbering = numbering + " " + p2
-                let origAnchor = p2.toLowerCase().replaceAll(findSpecialChars, "").replaceAll(" ", "-")
-                let anchor = headingWithNumbering.toLowerCase().replaceAll(findSpecialChars, "").replaceAll(" ", "-")
+                let origAnchor = p2.toLowerCase().replace(findSpecialChars, "").replace(/ /g, "-")
+                let anchor = headingWithNumbering.toLowerCase().replace(findSpecialChars, "").replace(/ /g, "-")
                 anchorPairs.push({origAnchor: origAnchor, replaceAnchor: anchor})
                 matches.push("\t".repeat(numHashes-1) + "- [" + headingWithNumbering + "](#" +  anchor + ")");
                 return p1 + "   " + headingWithNumbering;
