@@ -32,8 +32,7 @@ module.exports = function autoTableOfContents () {
             //     return match;
             // }
             replace: function(match, p1, p2, offset, string, groups) { 
-                const findMultipleSpaces = RegExp('[ ]{2,}', 'gi')
-                const findSpecialChars = RegExp('[^a-zA-Z0-9 ]', 'gi')
+                const findSpecialChars = RegExp('[^\-a-zA-Z0-9 ]', 'gi')
                 let numHashes = parseInt(p1.length)
                 let numbering = ""
                 switch (numHashes) {
@@ -72,7 +71,7 @@ module.exports = function autoTableOfContents () {
                 }
                 let headingWithNumbering = numbering + " " + p2
                 let origAnchor = p2.toLowerCase().trim().replace(findSpecialChars, "").replace(/ /g, "-")
-                let anchor = headingWithNumbering.toLowerCase().trim().replace(findSpecialChars, "").replace(findMultipleSpaces, " ").replace(/ /g, "-")
+                let anchor = headingWithNumbering.toLowerCase().trim().replace(findSpecialChars, "").replace(/ /g, "-")
                 anchorPairs.push({origAnchor: origAnchor, replaceAnchor: anchor})
                 matches.push("\t".repeat(numHashes-1) + "- [" + headingWithNumbering + "](#" +  anchor + ")");
                 return p1 + "   " + headingWithNumbering;
