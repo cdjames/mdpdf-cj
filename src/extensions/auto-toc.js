@@ -71,7 +71,7 @@ module.exports = function autoTableOfContents () {
                         break;
                 }
                 let headingWithNumbering = numbering + " " + p2
-                let origAnchor = p2.toLowerCase().trim().replace(findSpecialChars, "").replace(findMultipleSpaces, " ").replace(/ /g, "-")
+                let origAnchor = p2.toLowerCase().trim().replace(findSpecialChars, "").replace(/ /g, "-")
                 let anchor = headingWithNumbering.toLowerCase().trim().replace(findSpecialChars, "").replace(findMultipleSpaces, " ").replace(/ /g, "-")
                 anchorPairs.push({origAnchor: origAnchor, replaceAnchor: anchor})
                 matches.push("\t".repeat(numHashes-1) + "- [" + headingWithNumbering + "](#" +  anchor + ")");
