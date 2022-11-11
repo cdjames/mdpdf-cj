@@ -3,7 +3,7 @@
 # This is a test PDF
 ## This is an h2
 ### This is an h3
-# This,. is an `h1` **[with]** special//\ chars{}!
+# This - ,. is an `h1` **[with]** special//\ chars{}!
 
 \# not a heading
 
