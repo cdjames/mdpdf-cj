@@ -35,7 +35,7 @@ module.exports = function autoTableOfContents () {
             //     return match;
             // }
             replace: function(match, p1, p2, p3, offset, string, groups) { 
-                // look for opening of closing of code block (to avoid # comments)
+                // look for opening or closing of code block (to avoid # comments)
                 if (p3 == codeBlockToken) {
                     inCodeBlock = (inCodeBlock == true) ? false : true;
                     return match;

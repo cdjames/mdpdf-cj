@@ -10,7 +10,7 @@ function clean() {
     './README.html', 
     './output.pdf', 
     './test-img-output.pdf', 
-    // './test-toc-output.pdf',
+    './test-toc-output.pdf',
     './test-page-breaks-output.pdf'
   ];
 

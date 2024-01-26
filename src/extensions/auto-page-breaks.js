@@ -1,4 +1,7 @@
 module.exports = function autoPageBreaks () { 
+    var inCodeBlock = false;
+    const codeBlockToken = "```"
+
     return [
         {
             /** 
@@ -13,8 +16,17 @@ module.exports = function autoPageBreaks () {
              *  \s*(.*)$ - 0 or more spaces followed by the rest of the line
              * */ 
             type: 'lang',
-            regex: /^\s*(#+)\s*(.*)$/gim,
-            replace: function(match, p1, p2, offset, string, groups) { 
+            regex: /^\s*(#+)\s*(.*)$|^\s*(```).*$/gim,
+            replace: function(match, p1, p2, p3, offset, string, groups) { 
+                // look for opening or closing of code block (to avoid # comments)
+                if (p3 == codeBlockToken) {
+                    inCodeBlock = (inCodeBlock == true) ? false : true;
+                    return match;
+                } else if (inCodeBlock) {
+                    // if we're currently inside a code block, ignore # matches
+                    return match;
+                }
+
                 let pageBreak = '<div class="page-break"></div>';
                 const findSpecialChars = RegExp('[^a-zA-Z0-9 ]', 'gi');
                 let numHashes = parseInt(p1.length);
