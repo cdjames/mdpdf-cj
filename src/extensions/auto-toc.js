@@ -7,6 +7,8 @@ module.exports = function autoTableOfContents () {
     var h4Num = 0;
     var h5Num = 0;
     var h6Num = 0;
+    var inCodeBlock = false;
+    const codeBlockToken = "```"
 
     return [
         {
@@ -20,9 +22,10 @@ module.exports = function autoTableOfContents () {
              * regex:
              *  ^\s*(#+) - the beginning of the line, 0 or more spaces, then any group of 1 or more #s
              *  \s*(.*)$ - 0 or more spaces followed by the rest of the line
+             *  |^\s*(```).*$ - OR 0 or more spaces followed "```" and then the rest of the line
              * */ 
             type: 'lang',
-            regex: /^\s*(#+)\s*(.*)$/gim,
+            regex: /^\s*(#+)\s*(.*)$|^\s*(```).*$/gim,
             /* good for non-numbered TOC */
             // replace: function(match, p1, p2, offset, string, groups) { 
             //     const findSpecialChars = RegExp('[^a-zA-Z0-9 ]', 'gi')
@@ -31,10 +34,19 @@ module.exports = function autoTableOfContents () {
             //     matches.push("\t".repeat(numHashes-1) + "- [" + p2 + "](#" +  anchor + ")");
             //     return match;
             // }
-            replace: function(match, p1, p2, offset, string, groups) { 
-                const findSpecialChars = RegExp('[^\-a-zA-Z0-9 ]', 'gi')
-                let numHashes = parseInt(p1.length)
-                let numbering = ""
+            replace: function(match, p1, p2, p3, offset, string, groups) { 
+                // look for opening of closing of code block (to avoid # comments)
+                if (p3 == codeBlockToken) {
+                    inCodeBlock = (inCodeBlock == true) ? false : true;
+                    return match;
+                } else if (inCodeBlock) {
+                    // if we're currently inside a code block, ignore # matches
+                    return match;
+                }
+
+                const findSpecialChars = RegExp('[^\-a-zA-Z0-9 ]', 'gi');
+                let numHashes = parseInt(p1.length);
+                let numbering = "";
                 switch (numHashes) {
                     case 1:
                         h1Num += 1;

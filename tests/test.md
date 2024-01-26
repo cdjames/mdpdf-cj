@@ -4,6 +4,15 @@
 ## This is an h2
 ### This is an h3
 # This - ,. is an `h1` **[with]** special//\ chars{}!
+```bash
+# a comment in a shell script
+echo "some code"
+```
+
+```
+# another comment in a shell script
+echo "some code"
+```
 
 \# not a heading
 
